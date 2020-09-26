@@ -1,2 +1,2 @@
 # PlayerAnimation2
-![](player_animation_2.gif)
+<img src="/player_animation_2.gif" height="720"/>
