@@ -18,14 +18,17 @@
         app:layout_constraintBottom_toTopOf="@id/layout_navigation"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/dark_grey"
+        android:focusable="true"
+        android:clickable="true"
         >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_songs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:itemCount="1"
-            tools:listitem="@layout/item_song" />
+            android:focusable="false"
+            android:clickable="false"
+            />
     </FrameLayout>
 
 
@@ -74,6 +77,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

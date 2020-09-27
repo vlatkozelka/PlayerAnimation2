@@ -9,8 +9,11 @@
 
         <OnSwipe
             app:dragDirection="dragUp"
-            app:touchRegionId="@+id/layout_navigation"
-            />
+            app:touchRegionId="@id/layout_player" />
+
+        <OnClick
+            app:clickAction="transitionToEnd"
+            app:targetId="@id/layout_player" />
 
     </Transition>
 
@@ -19,9 +22,14 @@
         app:constraintSetEnd="@id/collapsed"
         app:constraintSetStart="@id/expanded">
 
+
         <OnSwipe
             app:dragDirection="dragDown"
-            app:touchRegionId="@+id/layout_navigation" />
+            app:touchRegionId="@id/layout_player" />
+
+        <OnClick
+            app:clickAction="transitionToEnd"
+            app:targetId="@id/layout_player" />
 
     </Transition>
 
@@ -61,8 +69,8 @@
             android:padding="5dp"
             android:weightSum="3"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
 
         <Constraint
             android:id="@+id/layout_player"

@@ -1,21 +1,18 @@
 package com.example.playeranimation2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.activity_main.*
 import org.notests.sharedsequence.Driver
 
 
@@ -35,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
   lateinit var mainLayout: MotionLayout
   lateinit var songsRecycler: RecyclerView
-  lateinit var playerLayout : FrameLayout
+  lateinit var playerLayout : ViewGroup
   lateinit var adapter: SongsAdapter
   lateinit var snapHelper: PagerSnapHelper
 
@@ -47,17 +44,7 @@ class MainActivity : AppCompatActivity() {
     songsRecycler = findViewById(R.id.recycler_songs)
     playerLayout = findViewById(R.id.layout_player)
 
-    snapHelper = PagerSnapHelper()
-
-    songsRecycler.layoutManager = object : LinearLayoutManager(this){
-      override fun canScrollHorizontally(): Boolean {
-        return true
-      }
-
-      override fun canScrollVertically(): Boolean {
-        return false
-      }
-    }.apply { orientation = LinearLayoutManager.HORIZONTAL }
+    songsRecycler.layoutManager = LinearLayoutManager(this).apply { orientation = LinearLayoutManager.HORIZONTAL }
 
     adapter = SongsAdapter()
 
@@ -65,7 +52,10 @@ class MainActivity : AppCompatActivity() {
 
     adapter.refreshData(appState.songs)
 
+    snapHelper = PagerSnapHelper()
     snapHelper.attachToRecyclerView(songsRecycler)
+
+
 
 
     mainLayout.setTransitionListener(object : MotionLayout.TransitionListener {
