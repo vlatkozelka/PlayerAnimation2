@@ -9,7 +9,8 @@
 
         <OnSwipe
             app:dragDirection="dragUp"
-            app:touchRegionId="@id/layout_player" />
+            app:touchAnchorId="@id/layout_player"
+            app:touchAnchorSide="top"/>
 
         <OnClick
             app:clickAction="transitionToEnd"
